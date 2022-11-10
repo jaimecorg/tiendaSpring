@@ -18,8 +18,11 @@
 
 <body>
 
-    <h2>¡Bienvenido!</h2>
-    <label type="text" name="nombre" value="<?php echo $_POST['email']; ?>" />
+    <div th:replace="commons/menu :: menu" />
+
+    <div class="container">
+        <h1 th:text="${greetings}">Hola</h1>
+    </div>
 
 
 
