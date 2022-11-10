@@ -22,6 +22,7 @@ public class ClienteController {
         ModelAndView modelAndView = new ModelAndView("clientes/list");
         modelAndView.addObject("clientes", getClientes());
         modelAndView.addObject("title", "clientes");
+
         return modelAndView;
     }
     
@@ -33,11 +34,26 @@ public class ClienteController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("cliente", getCliente(codigo));
         modelAndView.setViewName("clientes/edit");
+
         return modelAndView;
     }
 
-    @PostMapping(path = { "/add" })
-    public ModelAndView add(Cliente cliente) {
+    @GetMapping(path = { "/create" })
+    public ModelAndView create(Cliente cliente) {
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("cliente", new Cliente());
+        modelAndView.setViewName("clientes/new");
+
+        return modelAndView;
+    }
+
+    @PostMapping(path = { "/save" })
+    public ModelAndView save(Cliente cliente) {
+
+        int round = (int) (Math.random()*(100+5));
+
+        cliente.setCodigo(round);
 
         List<Cliente> clientes = getClientes();
         clientes.add(cliente);
@@ -45,15 +61,36 @@ public class ClienteController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("clientes", clientes);
         modelAndView.setViewName("clientes/list");
+
         return modelAndView;
     }
 
-    @GetMapping(path = { "/new" })
-    public ModelAndView nuevo(Cliente cliente) {
+    @PostMapping(path = { "/update" })
+    public ModelAndView update(Cliente cliente) {
+
+        List<Cliente> clientes = getClientes();
+
+        int indexOf = clientes.indexOf(cliente);
+
+        clientes.set(indexOf, cliente);
 
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("cliente", new Cliente());
-        modelAndView.setViewName("clientes/edit");
+        modelAndView.addObject("clientes", clientes);
+        modelAndView.setViewName("clientes/list");
+
+        return modelAndView;
+    }
+
+    @GetMapping(path = { "/delete/{codigo}" })
+    public ModelAndView delete(
+            @PathVariable(name = "codigo", required = true) int codigo) {
+
+        List<Cliente> clientes = getClientes();
+        clientes.remove(getCliente(codigo));
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("clientes", clientes);
+        modelAndView.setViewName("clientes/list");
+
         return modelAndView;
     }
         
@@ -68,7 +105,8 @@ public class ClienteController {
 
     private List<Cliente> getClientes() {
 
-        ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+        //ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+        List<Cliente> clientes = new ArrayList<>();
 
         clientes.add(new Cliente(1, "Juan", "Gomez", "juang@gmail.com","12345678Z", "685741962","C/Real, 13", false));
         clientes.add(new Cliente(2, "Jose", "Martinez", null, "12345678Z", "785412698","C/Madrid, 18", true));

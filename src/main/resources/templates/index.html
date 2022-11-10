@@ -14,9 +14,15 @@
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
         crossorigin="anonymous"></script>
     <title>Bienvenid@</title>
-</head>
 
-<body>
+    
+</head>
+<script> 
+    function cambiarPagina(){ 
+        window.location="/login/login";
+    }
+</script>  
+<body onload=cambiarPagina()>
     <div th:replace="commons/menu :: menu">
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
@@ -33,9 +39,6 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/productos/list}" href="productos/list.html">Productos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/clientes/list}" href="clientes/list.html">Clientes</a>
                         </li>
                     </ul>
                 </div>

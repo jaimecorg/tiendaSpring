@@ -7,19 +7,78 @@
     <!-- CARDS -->
 
     <div class="container">
-        <div class="row">
-          <div class="col-3">
+      <div class="row g-5">
+        
+        <div class="col-8">
+          <h4 class="mb-3">Datos Cliente</h4>
+          <form class="needs-validation"  method="post" th:action="@{/clientes/update}"  novalidate>
+              <input type="hidden" name="codigo" th:value="${cliente.codigo}">
+            <div class="row g-4">
+              <div class="col-sm-6">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="" th:value="${cliente.nombre}" value="" required>
+                <div class="invalid-feedback">
+                  Nombre requerido.
+                </div>
+              </div>
+  
+              <div class="col-sm-6">
+                <label for="lastName" class="form-label">Apellidos</label>
+                <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="" th:value="${cliente.apellidos}" value="" required>
+                <div class="invalid-feedback">
+                  Apellidos requeridos.
+                </div>
+              </div>
 
-            <div class="card" style="width: 18rem;">
-              <img th:src="${producto.urlImg}" src="../static/img/cocacola.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 th:text="${producto.nombre}" class="card-title">Card title</h5>
-                <p th:text="${producto.descripcion}"  class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="list.html" th:href="@{/productos/list}"  class="btn btn-primary">Go somewhere</a>
+              <div class="col-sm-6">
+                <label for="dni" class="form-label">DNI</label>
+                <input type="text" class="form-control" id="dni" name="dni" placeholder="" th:value="${cliente.dni}" value="" required>
+                <div class="invalid-feedback">
+                  Dni requerido.
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <label for="telefono" class="form-label">Teléfono <span class="text-muted">(Opcional)</span></label>
+                <input type="text" class="form-control" id="telefono" name="telefono" placeholder="" th:value="${cliente.telefono}" value="">
+              </div>
+
+              <div class="col-sm-12">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" class="form-control" id="address" name="direccion" th:value="${cliente.direccion}" placeholder="1234 Main St" required>
+                <div class="invalid-feedback">
+                  Please enter your shipping address.
+                </div>
+              </div>
+
+              <div class="col-sm-12">
+                <label for="email" class="form-label">Email <span class="text-muted">(Opcional)</span></label>
+                <input type="email" class="form-control" id="email" name="email" th:value="${cliente.email}" placeholder="you@example.com">
+                <div class="invalid-feedback">
+                  Please enter a valid email address for shipping updates.
+                </div>
+              </div>
+
+              <div class="col-sm-12">
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="vip" name="vip" th:checked="${cliente.vip}">
+                  <label class="form-check-label" for="vip">Es cliente VIP</label>
+                </div>
               </div>
             </div>
-          </div>
+  
+            <hr class="my-4">
+  
+            <div class="col-sm-12">
+              <div class="btn-group">
+                <a class="btn btn-primary" th:href="@{/clientes/list}" href="#" role="button">Cancelar</a>
+                <button class="btn btn-primary" type="submit">Actualizar</button>
+              </div>
+            </div>
+
+          </form>
         </div>
+      </div>
     </div>
     
     <div th:replace="commons/footer :: footer" class="container" />
