@@ -12,6 +12,9 @@ import com.jaimecorg.springprojects.tienda.model.Usuario;
 @RequestMapping("/login")
 public class LoginController {
 
+    
+
+
     @GetMapping(value = {"/signin"})
     public String signin(){
         return "login";
