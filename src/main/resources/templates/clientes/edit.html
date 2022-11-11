@@ -10,12 +10,12 @@
       <div class="row g-5">
         
         <div class="col-8">
-          <h4 class="mb-3">Datos Cliente</h4>
+          <h4 th:text="#{cliente.edicion.titulo}" class="mb-3">Datos Cliente</h4>
           <form class="needs-validation"  method="post" th:action="@{/clientes/update}"  novalidate>
               <input type="hidden" name="codigo" th:value="${cliente.codigo}">
             <div class="row g-4">
               <div class="col-sm-6">
-                <label for="nombre" class="form-label">Nombre</label>
+                <label th:text="#{cliente.nombre}" for="nombre" class="form-label">Nombre</label>
                 <input type="text" class="form-control" id="nombre" name="nombre" placeholder="" th:value="${cliente.nombre}" value="" required>
                 <div class="invalid-feedback">
                   Nombre requerido.

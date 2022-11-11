@@ -1,5 +1,8 @@
 package com.jaimecorg.springprojects.tienda.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +15,8 @@ import com.jaimecorg.springprojects.tienda.model.Usuario;
 @RequestMapping("/login")
 public class LoginController {
 
-    
+    @Autowired
+    private MessageSource messageSource;
 
 
     @GetMapping(value = {"/signin"})
@@ -23,7 +27,9 @@ public class LoginController {
     @PostMapping(value = "/login")
     public String login(Model model, Usuario usuario){
 
-        model.addAttribute("greetings", "¡Bienvenido, " + usuario.getName() + "!");
+        String message = messageSource.getMessage("saludar.usuario", new String[]{usuario.getName()}, LocaleContextHolder.getLocale());
+
+        model.addAttribute("greetings", message);
         return "welcome";
     }
 

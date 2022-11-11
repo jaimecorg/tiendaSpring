@@ -20,12 +20,12 @@
   
     <form action="welcome.html" th:action="@{/login/login}" method="post">
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <label th:text="#{cliente.email}" for="exampleInputEmail1" class="form-label">Email address</label>
           <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus name="name">
           <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
         </div>
         <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <label th:text="#{cliente.contrasenia}" for="exampleInputPassword1" class="form-label">Password</label>
           <input type="password" class="form-control" id="password">
         </div>
         <button type="submit" class="btn btn-info">Submit</button>
