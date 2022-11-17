@@ -12,12 +12,12 @@
     <div class="row g-5">
 
       <div class="col-8">
-        <h4 class="mb-3">Nuevo Cliente</h4>
+        <h4 th:text="#{cliente.boton.nuevo}" class="mb-3">Nuevo Cliente</h4>
         <form class="needs-validation" method="post" th:action="@{/clientes/save}" novalidate>
           <input type="hidden" name="codigo" th:value="${cliente.codigo}">
           <div class="row g-4">
             <div class="col-sm-6">
-              <label for="nombre" class="form-label">Nombre</label>
+              <label th:text="#{cliente.nombre}" for="nombre" class="form-label">Nombre</label>
               <input type="text" class="form-control" id="nombre" name="nombre" placeholder=""
                 th:value="${cliente.nombre}" value="" required>
               <div class="invalid-feedback">
@@ -26,7 +26,7 @@
             </div>
 
             <div class="col-sm-6">
-              <label for="lastName" class="form-label">Apellidos</label>
+              <label th:text="#{cliente.apellidos}" for="lastName" class="form-label">Apellidos</label>
               <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder=""
                 th:value="${cliente.apellidos}" value="" required>
               <div class="invalid-feedback">
@@ -35,7 +35,7 @@
             </div>
 
             <div class="col-sm-6">
-              <label for="dni" class="form-label">DNI</label>
+              <label th:text="#{cliente.dni}" for="dni" class="form-label">DNI</label>
               <input type="text" class="form-control" id="dni" name="dni" placeholder="" th:value="${cliente.dni}"
                 value="" required>
               <div class="invalid-feedback">
@@ -44,13 +44,13 @@
             </div>
 
             <div class="col-sm-6">
-              <label for="telefono" class="form-label">Teléfono <span class="text-muted">(Opcional)</span></label>
+              <label th:text="#{cliente.telefono}" for="telefono" class="form-label">Teléfono <span class="text-muted">(Opcional)</span></label>
               <input type="text" class="form-control" id="telefono" name="telefono" placeholder=""
                 th:value="${cliente.telefono}" value="">
             </div>
 
             <div class="col-sm-12">
-              <label for="address" class="form-label">Address</label>
+              <label th:text="#{cliente.direccion}" for="address" class="form-label">Dirección</label>
               <input type="text" class="form-control" id="address" name="direccion" th:value="${cliente.direccion}"
                 placeholder="Calle San Francisco, 89" required>
               <div class="invalid-feedback">
@@ -59,7 +59,7 @@
             </div>
 
             <div class="col-sm-12">
-              <label for="email" class="form-label">Email <span class="text-muted">(Opcional)</span></label>
+              <label th:text="#{cliente.email}" for="email" class="form-label">Email <span class="text-muted">(Opcional)</span></label>
               <input type="email" class="form-control" id="email" name="email" th:value="${cliente.email}"
                 placeholder="tu@ejemplo.com">
               <div class="invalid-feedback">
@@ -70,7 +70,7 @@
             <div class="col-sm-12">
               <div class="form-check">
                 <input type="checkbox" class="form-check-input" id="vip" name="vip" th:checked="${cliente.vip}">
-                <label class="form-check-label" for="vip">Es cliente VIP</label>
+                <label th:text="#{cliente.vip}" class="form-check-label" for="vip">Es cliente VIP</label>
               </div>
             </div>
           </div>
@@ -79,8 +79,8 @@
 
           <div class="col-sm-12">
             <div class="btn-group">
-              <a class="btn btn-primary" th:href="@{/clientes/list}" href="#" role="button">Cancelar</a>
-              <button class="btn btn-primary" type="submit">Crear</button>
+              <a th:text="#{boton.cancelar}" class="btn btn-primary" th:href="@{/clientes/list}" href="#" role="button">Cancelar</a>
+              <button th:text="#{boton.crear}" class="btn btn-primary" type="submit">Crear</button>
             </div>
           </div>
         </form>

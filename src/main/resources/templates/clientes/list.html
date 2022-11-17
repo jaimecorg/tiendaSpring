@@ -12,23 +12,23 @@
 
   <div class="row">
     <div class="col-lg-3">
-      <a th:href="@{/clientes/create}" class="btn btn-primary btn-sm mb-3">Nuevo cliente</a>
+      <a th:text="#{cliente.boton.nuevo}" th:href="@{/clientes/create}" class="btn btn-primary btn-sm mb-3">Nuevo cliente</a>
     </div>
   </div>
 
   <!-- TABLE -->
   <div>
-    <p>Lista de clientes</p>
+    <p th:text="#{clientes.listado.titulo}">Lista de clientes</p>
     <table class="table table-striped table-hover">
       <thead>
         <tr>
-          <th scope="col">Codigo</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Apellidos</th>
-          <th scope="col">Email</th>
-          <th scope="col">Telefono</th>
-          <th scope="col">Direccion</th>
-          <th scope="col">VIP</th>
+          <th th:text="#{cliente.codigo}" scope="col">Codigo</th>
+          <th th:text="#{cliente.nombre}" scope="col">Nombre</th>
+          <th th:text="#{cliente.apellidos}" scope="col">Apellidos</th>
+          <th th:text="#{cliente.email}" scope="col">Email</th>
+          <th th:text="#{cliente.telefono}" scope="col">Telefono</th>
+          <th th:text="#{cliente.direccion}" scope="col">Direccion</th>
+          <th th:text="#{cliente.vip}" scope="col">VIP</th>
           <th scope="col"></th>
         </tr>
       </thead>

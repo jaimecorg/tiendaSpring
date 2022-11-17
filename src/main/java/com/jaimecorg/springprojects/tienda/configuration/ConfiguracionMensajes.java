@@ -19,7 +19,7 @@ public class ConfiguracionMensajes implements WebMvcConfigurer{
     public LocaleResolver localeResolver() {
 
         SessionLocaleResolver sessionLocaleResolver = new SessionLocaleResolver();
-        sessionLocaleResolver.setDefaultLocale(new Locale("en"));
+        sessionLocaleResolver.setDefaultLocale(new Locale("es"));
 
         return sessionLocaleResolver;
     }
@@ -36,7 +36,7 @@ public class ConfiguracionMensajes implements WebMvcConfigurer{
     }
 
     @Bean
-    public LocaleChangeInterceptor localeChangeInterceptor() {
+    public LocaleChangeInterceptor localeChangeInterceptor() { //Aquí solo lo "damos de alta", lo usamos en la función de abajo
         LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
         lci.setParamName("lang_config");
         
