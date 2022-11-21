@@ -3,6 +3,7 @@ package com.jaimecorg.springprojects.tienda.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,15 +13,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.jaimecorg.springprojects.tienda.model.Cliente;
+import com.jaimecorg.springprojects.tienda.services.ClientesServices;
 
 @Controller
 @RequestMapping("/clientes")
 public class ClienteController {
 
+    @Autowired
+    ClientesServices clientesServices;
+
     @GetMapping(value="/list")
     public ModelAndView list(Model model) {
+        
+        List<Cliente> clientes = clientesServices.findAll();
+
         ModelAndView modelAndView = new ModelAndView("clientes/list");
-        modelAndView.addObject("clientes", getClientes());
+        modelAndView.addObject("clientes", clientes);
         modelAndView.addObject("title", "clientes");
 
         return modelAndView;
