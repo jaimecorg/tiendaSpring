@@ -7,6 +7,7 @@ public class Producto {
     private String nombre;
     private String descripcion;
     private String urlImg;
+    private Float precio;
     private Date fecha;
 
     public Producto() {
@@ -48,6 +49,14 @@ public class Producto {
         this.urlImg = urlImg;
     }
 
+    public Float getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(Float precio) {
+        this.precio = precio;
+    }
+    
     public Date getFecha() {
         return fecha;
     }
