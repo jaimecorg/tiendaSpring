@@ -26,6 +26,7 @@ public class LoginController {
     public String signin(){
         return "login";
     }
+    
 
     @PostMapping(value = "/login")
     public ModelAndView login(Model model, Usuario usuario, HttpSession session){
