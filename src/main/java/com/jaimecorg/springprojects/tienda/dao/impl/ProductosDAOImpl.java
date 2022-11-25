@@ -42,7 +42,10 @@ public class ProductosDAOImpl extends JdbcDaoSupport implements ProductosDAO {
         Object params[] = { codigo };
         int types[] = { Types.INTEGER };
 
-        Producto producto = (Producto) getJdbcTemplate().queryForObject(query, params, types, new BeanPropertyRowMapper(Producto.class));
+        // Producto producto = getJdbcTemplate().query( query, new
+        // BeanPropertyRowMapper(Producto.class));
+        Producto producto = (Producto) getJdbcTemplate().queryForObject(query, params, types,
+                new BeanPropertyRowMapper(Producto.class));
 
         return producto;
     }
@@ -50,7 +53,7 @@ public class ProductosDAOImpl extends JdbcDaoSupport implements ProductosDAO {
     @Override
     public void insert(Producto producto) {
         String query = "insert into Productos (nombre, descripcion, precio)" +
-                "values (?,?,?)";
+                " values (?,?,?)";
 
         Object[] params = {
                 producto.getNombre(),
@@ -76,13 +79,15 @@ public class ProductosDAOImpl extends JdbcDaoSupport implements ProductosDAO {
         Object[] params = {
             producto.getNombre(),
             producto.getDescripcion(),
-            producto.getPrecio()
+            producto.getPrecio(),
+            producto.getCodigo()
     };
 
     int[] types = {
             Types.VARCHAR,
             Types.VARCHAR,
-            Types.FLOAT
+            Types.FLOAT,
+            Types.INTEGER
     };
 
         int update = getJdbcTemplate().update(query, params, types);
@@ -101,6 +106,8 @@ public class ProductosDAOImpl extends JdbcDaoSupport implements ProductosDAO {
             Types.INTEGER
     };
 
-    int delete = getJdbcTemplate().update(query, params, types);  
+    int delete = getJdbcTemplate().update(query, params, types);
+        
     }
+
 }

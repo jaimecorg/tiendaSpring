@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.jaimecorg.springprojects.tienda.model.Usuario;
 
@@ -27,21 +28,27 @@ public class LoginController {
     }
 
     @PostMapping(value = "/login")
-    public String login(Model model, Usuario usuario, HttpSession session){
+    public ModelAndView login(Model model, Usuario usuario, HttpSession session){
 
         String message = messageSource.getMessage("saludar.usuario", new String[]{usuario.getName()}, LocaleContextHolder.getLocale());
 
-        model.addAttribute("greetings", message);
-        //String id;
-        //HttpSession session = httpRequest.getSession();
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("greetings", message);
+        modelAndView.setViewName("welcome");
+
         session.setAttribute("usuario", usuario);
-        return "welcome";
+
+        return modelAndView;
     }
 
-    @GetMapping(value = {"/logout"})
-    public String logout(HttpSession session){
+    @GetMapping(value = "/logout")
+    public ModelAndView logout(HttpSession session){
+        ModelAndView modelAndView = new ModelAndView("login/signin");
+
+        //session.setAttribute("usuario", null);
         session.invalidate();
-        return "login";
+
+        return modelAndView;
     }
     
     @GetMapping(value = {"/welcome"})

@@ -1,20 +1,24 @@
 package com.jaimecorg.springprojects.tienda.model;
 
-import java.util.Date;
-
 public class Producto {
     private int codigo;
     private String nombre;
     private String descripcion;
-    private String urlImg;
-    private Float precio;
-    private Date fecha;
+    private float precio;
 
     public Producto() {
+
     }
 
     public Producto(int codigo) {
         this.codigo = codigo;
+    }
+
+    public Producto(int codigo, String nombre, String descripcion, float precio) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precio = precio;
     }
 
     public int getCodigo() {
@@ -41,36 +45,12 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public String getUrlImg() {
-        return urlImg;
-    }
-
-    public void setUrlImg(String urlImg) {
-        this.urlImg = urlImg;
-    }
-
-    public Float getPrecio() {
+    public float getPrecio() {
         return precio;
     }
 
-    public void setPrecio(Float precio) {
+    public void setPrecio(float precio) {
         this.precio = precio;
-    }
-    
-    public Date getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-
-    public Producto(int codigo, String nombre, String descripcion, String urlImg, Date fecha) {
-        this.codigo = codigo;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.urlImg = urlImg;
-        this.fecha = fecha;
     }
 
     @Override

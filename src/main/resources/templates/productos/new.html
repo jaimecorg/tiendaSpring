@@ -9,7 +9,7 @@
     <div class="container">
         <div class="row">
           <div class="col-3">
-            <form style="width: 18em;" th:action="@{/productos/update}" method="post">
+            <form style="width: 18em;" th:action="@{/productos/save}" method="post">
               <input type="hidden" th:value="${producto.codigo}" name="codigo">
               <div class="mb-3">
                 <label for="exampleInput1" class="form-label">Nombre</label>

@@ -69,7 +69,7 @@
             <button th:text="#{menu.buscar}" class="btn btn-outline-success" type="submit">Search</button>
           </form>
 
-          <a href="#" ><i class="bi bi-box-arrow-left" th:text="${session.usuario.name}"></i></a>
+          <a th:href="@{/login/logout}" href="#" ><i class="bi bi-box-arrow-left" th:text="${session.usuario.name}"></i></a>
         </div>
       </div>
     </nav>
