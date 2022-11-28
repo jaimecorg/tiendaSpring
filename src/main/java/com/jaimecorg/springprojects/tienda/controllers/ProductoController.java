@@ -1,5 +1,6 @@
 package com.jaimecorg.springprojects.tienda.controllers;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.jaimecorg.springprojects.tienda.model.Producto;
@@ -55,7 +57,11 @@ public class ProductoController {
     }
 
     @PostMapping(path = "/save")
-    public ModelAndView save(Producto producto){
+    public ModelAndView save(Producto producto, @RequestParam("imagen") MultipartFile multipartFile) throws IOException{
+
+        byte[] file = multipartFile.getBytes();
+        producto.setImage(file);
+
 
         productosServices.insert(producto);
         

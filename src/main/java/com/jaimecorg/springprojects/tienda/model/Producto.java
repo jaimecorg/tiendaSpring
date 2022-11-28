@@ -5,6 +5,7 @@ public class Producto {
     private String nombre;
     private String descripcion;
     private float precio;
+    private byte[] image;
 
     public Producto() {
 
@@ -53,6 +54,14 @@ public class Producto {
         this.precio = precio;
     }
 
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -75,4 +84,5 @@ public class Producto {
         return true;
     }
 
+  
 }

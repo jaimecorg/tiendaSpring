@@ -8,7 +8,6 @@ import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -26,11 +25,13 @@ public class LoginController {
     public String signin(){
         return "login";
     }
-    
 
-    @PostMapping(value = "/login")
+
+    @GetMapping(value = "/login")
     public ModelAndView login(Model model, Usuario usuario, HttpSession session){
 
+        usuario = new Usuario();
+        usuario.setName("Jaime");
         String message = messageSource.getMessage("saludar.usuario", new String[]{usuario.getName()}, LocaleContextHolder.getLocale());
 
         ModelAndView modelAndView = new ModelAndView();

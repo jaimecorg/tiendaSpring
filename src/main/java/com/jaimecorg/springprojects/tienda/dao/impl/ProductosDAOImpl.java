@@ -52,19 +52,22 @@ public class ProductosDAOImpl extends JdbcDaoSupport implements ProductosDAO {
 
     @Override
     public void insert(Producto producto) {
-        String query = "insert into Productos (nombre, descripcion, precio)" +
-                " values (?,?,?)";
+        String query = "insert into Productos (nombre, descripcion, precio, imagen)" +
+                " values (?,?,?,?)";
 
         Object[] params = {
                 producto.getNombre(),
                 producto.getDescripcion(),
-                producto.getPrecio()
+                producto.getPrecio(),
+                producto.getImage()
         };
 
         int[] types = {
                 Types.VARCHAR,
                 Types.VARCHAR,
-                Types.FLOAT
+                Types.FLOAT,
+                Types.BLOB
+
         };
 
         int update = getJdbcTemplate().update(query, params, types);
@@ -74,20 +77,24 @@ public class ProductosDAOImpl extends JdbcDaoSupport implements ProductosDAO {
     @Override
     public void update(Producto producto) {
 
-        String query = "update Productos set nombre = ?, descripcion = ?, precio = ? where codigo = ?";
+        String query = "update Productos set nombre = ?, descripcion = ?, precio = ?, imagen = ? where codigo = ?";
 
         Object[] params = {
             producto.getNombre(),
             producto.getDescripcion(),
             producto.getPrecio(),
-            producto.getCodigo()
+            producto.getCodigo(),
+            producto.getImage()
+
     };
 
     int[] types = {
             Types.VARCHAR,
             Types.VARCHAR,
             Types.FLOAT,
-            Types.INTEGER
+            Types.INTEGER,
+            Types.BLOB
+
     };
 
         int update = getJdbcTemplate().update(query, params, types);
