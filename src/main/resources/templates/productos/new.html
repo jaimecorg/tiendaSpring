@@ -9,8 +9,13 @@
     <div class="container">
         <div class="row">
           <div class="col-3">
-            <form style="width: 18em;" th:action="@{/productos/save}" method="post">
+            <form style="width: 18em;" th:action="@{/productos/save}" method="post" enctype="multipart/form-data">
               <input type="hidden" th:value="${producto.codigo}" name="codigo">
+              
+              <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupFile01">Upload</label>
+                <input type="file" class="form-control" name="imagen">
+              </div>
               <div class="mb-3">
                 <label for="exampleInput1" class="form-label">Nombre</label>
                 <input th:value="${producto.nombre}" type="text" name="nombre" class="form-control" id="exampleInput1">
